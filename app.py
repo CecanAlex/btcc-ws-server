@@ -9,8 +9,10 @@ last_price = None
 def on_message(ws, message):
     global last_price
     data = json.loads(message)
+    print("📨 Mesaj primit:", data)  # <-- adăugat
     if 'topic' in data and 'data' in data and 'last' in data['data']:
         last_price = float(data['data']['last'])
+        print("✅ Preț actualizat:", last_price)
 
 def on_open(ws):
     payload = {
